@@ -7,7 +7,7 @@ Create an instant messaging platform with socket
 
 ## Knowledges
 ### general 
-![socket](Socket.png)
+![socket](Resource/Socket.png)
 ### socket(int domain, int type, int protocol)
 ### struct sockaddr_in
 ```c++
@@ -23,8 +23,9 @@ Create an instant messaging platform with socket
     }
  ```   
 ### bind
-```c
- int bind(int sockfd, const struct sockaddr *addr , socklen_t addrlen);
+```c++
+ int bind(int sockfd, const struct sockaddr *addr , socklen_t addrlen);//windows
+ int bind(int sock, struct sockaddr *addr, socklen_t addrlen);  //Linux
 ```
 
 

@@ -1,4 +1,8 @@
 # socket
+## Branches
+1.master
+2.echo
+3.iterative server
 ## Final goal
 Create an instant messaging platform with socket
 ## Requirements

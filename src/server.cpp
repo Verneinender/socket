@@ -27,22 +27,27 @@ int main()
     listen(server_socket, 20);
 
     //accept request from client
-    struct sockaddr_in client_addr;
-    socklen_t client_addr_size = sizeof(client_addr);
-    int client_socket = accept(server_socket, (sockaddr*)&client_addr, &client_addr_size);
+   
+    char buffer[100];
 
     //send information to client
     //char info[]  = "TU Darmstadt";
     //tring info = "TU Darmstadt";
    // write(client_socket, info, sizeof(info));
+    while(1)
+    {
+        struct sockaddr_in client_addr;
+        socklen_t client_addr_size = sizeof(client_addr);
+        int client_socket = accept(server_socket, (sockaddr*)&client_addr, &client_addr_size);
+        read(client_socket, buffer, sizeof(buffer)-1);
+        write(client_socket, buffer, sizeof(buffer));
+        close(client_socket);
+        memset(buffer, 0, sizeof(buffer));
+    }
 
-   char buffer[100];
-   read(client_socket, buffer, sizeof(buffer)-1);
-   
-   write(client_socket, buffer, sizeof(buffer));
 
     //close socket
-    close(client_socket);
+    
     close(server_socket);
 
     return 0;

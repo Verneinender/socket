@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <sys/socket.h>
-
+using namespace std;
 int main()
 {
     //create socket
@@ -20,10 +20,18 @@ int main()
     connect(sock, (struct sockaddr*)&serv_addr, sizeof(serv_addr));
 
     //read data
-    char buffer[40];
-    read(sock, buffer, sizeof(buffer)-1);
+    //char buffer[100];
+    char bufSend[100]= {0};
+    std::cout<<"Please input a message: "<<endl;
+    std::cin>>bufSend;
 
-    std::cout<<"Message form server is: "<<buffer<<std::endl;
+    write(sock, bufSend, sizeof(bufSend));
+
+    //reveive data from server
+    char bufRecv[100] = {0};
+    read(sock, bufRecv, sizeof(bufRecv));
+
+    std::cout<<"Message form server is: "<<bufRecv<<std::endl;
 
     //close socket
     close(sock);

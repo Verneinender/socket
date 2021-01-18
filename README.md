@@ -63,3 +63,4 @@ int accept(int sock, struct sockaddr *addr, socklen_t *addrlen);  //Linux
 SOCKET accept(SOCKET sock, struct sockaddr *addr, int *addrlen);  //Windows
 ```
 `accept()` returns a new `socket`, which restores IP and Port of client socket, and sock is the socket of **server socket**
+

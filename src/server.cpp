@@ -1,13 +1,13 @@
 #include <iostream>
 #include <string.h>
-//#include <string>
+#include <string>
 #include <stdlib.h>
 #include <unistd.h>
 #include  <arpa/inet.h>
 #include  <sys/socket.h>
 #include  <netinet/in.h>
 
-//using namespace std;
+using namespace std;
 
 int main()
 {
@@ -32,8 +32,14 @@ int main()
     int client_socket = accept(server_socket, (sockaddr*)&client_addr, &client_addr_size);
 
     //send information to client
-    char info[]  = "TU Darmstadt";
-    write(client_socket, info, sizeof(info));
+    //char info[]  = "TU Darmstadt";
+    //tring info = "TU Darmstadt";
+   // write(client_socket, info, sizeof(info));
+
+   char buffer[100];
+   read(client_socket, buffer, sizeof(buffer)-1);
+   
+   write(client_socket, buffer, sizeof(buffer));
 
     //close socket
     close(client_socket);
